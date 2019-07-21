@@ -13,8 +13,19 @@ public class CriminalCase {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "occurenceTime", nullable = false)
-    private long occurrenceTime;
+    @Column(name = "caseTime", nullable = false)
+    private long caseTime;
+
+    @Column(name = "caseName", nullable = false)
+    private String caseName;
+
+    public CriminalCase() {
+    }
+
+    public CriminalCase(String caseName, long caseTime) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
+    }
 
     public long getId() {
         return id;
@@ -24,11 +35,19 @@ public class CriminalCase {
         this.id = id;
     }
 
-    public long getOccurrenceTime() {
-        return occurrenceTime;
+    public long getCaseTime() {
+        return caseTime;
     }
 
-    public void setOccurrenceTime(long occurrenceTime) {
-        this.occurrenceTime = occurrenceTime;
+    public void setCaseTime(long caseTime) {
+        this.caseTime = caseTime;
+    }
+
+    public String getCaseName() {
+        return caseName;
+    }
+
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
     }
 }
