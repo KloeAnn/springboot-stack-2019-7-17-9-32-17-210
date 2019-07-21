@@ -1,5 +1,6 @@
 package com.tw.apistackbase.Repository;
 
+import com.tw.apistackbase.model.CaseInformation;
 import com.tw.apistackbase.model.CriminalCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +28,9 @@ public class CriminalCaseRepositoryTest {
     @Before
     public void setUp() {
         criminalCases = new ArrayList<>();
-        criminalCases.add(new CriminalCase("case-1", 1600));
-        criminalCases.add(new CriminalCase("case-2", 1700));
-        criminalCases.add(new CriminalCase("case-3", 1800));
+        criminalCases.add(new CriminalCase("case-1", 1600,new CaseInformation("ob1", "sub1")));
+        criminalCases.add(new CriminalCase("case-2", 1700,new CaseInformation("ob2", "sub2")));
+        criminalCases.add(new CriminalCase("case-3", 1800,new CaseInformation("ob3", "sub3")));
         criminalCaseRepository.saveAll(criminalCases);
     }
 
@@ -64,7 +65,13 @@ public class CriminalCaseRepositoryTest {
         Assertions.assertEquals(findCriminalCases.size(), 2);
     }
 
-
+    @Test
+    public void should_return_criminal_case_with_detail_when_set_details_to_it() {
+        CaseInformation caseInformation = new CaseInformation("objective-description-1", "subjective-description-1");
+        CriminalCase criminalCase = new CriminalCase("new", 1600,caseInformation);
+        CriminalCase saveCriminalCase =  criminalCaseRepository.save(criminalCase);
+        Assertions.assertSame(saveCriminalCase.getCaseInformation(), caseInformation);
+    }
 
 
 }
