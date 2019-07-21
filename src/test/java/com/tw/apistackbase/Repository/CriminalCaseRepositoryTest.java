@@ -45,5 +45,11 @@ public class CriminalCaseRepositoryTest {
         Assertions.assertEquals(findCriminalCases.get(0).getCaseTime(), 1800);
     }
 
+    @Test
+    public void should_return_criminal_case_when_find_criminal_case_by_id() {
+        CriminalCase findCriminalCase = criminalCaseRepository.findCriminalCaseById(1);
+        Assertions.assertEquals(findCriminalCase.getCaseTime(), 1600);
+    }
+
 
 }
