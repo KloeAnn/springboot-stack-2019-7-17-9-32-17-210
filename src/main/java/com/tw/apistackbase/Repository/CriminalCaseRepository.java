@@ -10,4 +10,5 @@ public interface CriminalCaseRepository extends JpaRepository<CriminalCase, Long
     List<CriminalCase> findAllByOrderByCaseTimeDesc();
     CriminalCase findCriminalCaseById(long id);
     List<CriminalCase> findAllByCaseName(String name);
+    CriminalCase deleteById(long id);
 }

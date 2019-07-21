@@ -57,5 +57,14 @@ public class CriminalCaseRepositoryTest {
         Assertions.assertEquals(findCriminalCases.get(0).getCaseTime(), 1800);
     }
 
+    @Test
+    public void should_return_criminal_case_when_delete_criminal_case_by_id() {
+        criminalCaseRepository.deleteById(Long.valueOf(1));
+        List<CriminalCase> findCriminalCases = criminalCaseRepository.findAll();
+        Assertions.assertEquals(findCriminalCases.size(), 2);
+    }
+
+
+
 
 }
