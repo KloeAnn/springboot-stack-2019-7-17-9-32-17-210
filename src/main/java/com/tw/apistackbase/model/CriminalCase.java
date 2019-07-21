@@ -1,4 +1,5 @@
 package com.tw.apistackbase.model;
+import javax.persistence.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,12 +20,18 @@ public class CriminalCase {
     @Column(name = "caseName", nullable = false)
     private String caseName;
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private CaseInformation caseInformation;
+
+
     public CriminalCase() {
     }
 
-    public CriminalCase(String caseName, long caseTime) {
+    public CriminalCase(String caseName, long caseTime,CaseInformation caseInformation) {
         this.caseName = caseName;
         this.caseTime = caseTime;
+        this.caseInformation=caseInformation;
     }
 
     public long getId() {
@@ -49,5 +56,13 @@ public class CriminalCase {
 
     public void setCaseName(String caseName) {
         this.caseName = caseName;
+    }
+
+    public CaseInformation getCaseInformation() {
+        return caseInformation;
+    }
+
+    public void setCaseInformation(CaseInformation caseInformation) {
+        this.caseInformation = caseInformation;
     }
 }

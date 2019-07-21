@@ -1,9 +1,9 @@
 package com.tw.apistackbase.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
+import javax.persistence.*;
+
+@Entity
 public class CaseInformation {
 
     @Id
