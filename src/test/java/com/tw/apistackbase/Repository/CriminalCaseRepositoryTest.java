@@ -39,5 +39,11 @@ public class CriminalCaseRepositoryTest {
         Assertions.assertEquals(findCriminalCases.size(), 3);
     }
 
+    @Test
+    public void should_return_all_criminal_cases_order_by_time_desc_when_find_all_with_order() {
+        List<CriminalCase> findCriminalCases = criminalCaseRepository.findAllByOrderByCaseTimeDesc();
+        Assertions.assertEquals(findCriminalCases.get(0).getCaseTime(), 1800);
+    }
+
 
 }
