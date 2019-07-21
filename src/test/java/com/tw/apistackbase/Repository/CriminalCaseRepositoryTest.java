@@ -2,6 +2,7 @@ package com.tw.apistackbase.Repository;
 
 import com.tw.apistackbase.model.CaseInformation;
 import com.tw.apistackbase.model.CriminalCase;
+import com.tw.apistackbase.model.Procuratorate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -67,11 +68,19 @@ public class CriminalCaseRepositoryTest {
 
     @Test
     public void should_return_criminal_case_with_detail_when_set_details_to_it() {
-        CaseInformation caseInformation = new CaseInformation("objective-description-1", "subjective-description-1");
+        CaseInformation caseInformation = new CaseInformation("ob1", "sub1");
         CriminalCase criminalCase = new CriminalCase("new", 1600,caseInformation);
         CriminalCase saveCriminalCase =  criminalCaseRepository.save(criminalCase);
         Assertions.assertSame(saveCriminalCase.getCaseInformation(), caseInformation);
     }
 
+    @Test
+    public void should_return_criminal_case_with_procuratortate_when_set_procuratortate_to_it() {
+        Procuratorate procuratorate = new Procuratorate("zhangsan");
+        CriminalCase criminalCase = new CriminalCase("new", 1600,new CaseInformation("ob1", "sub1"));
+        criminalCase.setProcuratorate(procuratorate);
+        CriminalCase saveCriminalCase =  criminalCaseRepository.save(criminalCase);
+        Assertions.assertSame(saveCriminalCase.getProcuratorate(), procuratorate);
+    }
 
 }

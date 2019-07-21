@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class CriminalCase {
@@ -20,6 +21,11 @@ public class CriminalCase {
     @Column(name = "caseName", nullable = false)
     private String caseName;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @NotNull
+    private Procuratorate procuratorate;
+
+
 
     @OneToOne(cascade = CascadeType.ALL)
     private CaseInformation caseInformation;
@@ -32,6 +38,13 @@ public class CriminalCase {
         this.caseName = caseName;
         this.caseTime = caseTime;
         this.caseInformation=caseInformation;
+    }
+
+    public CriminalCase(String caseName, long caseTime, CaseInformation caseInformation, @NotNull Procuratorate procuratorate) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
+        this.caseInformation = caseInformation;
+        this.procuratorate = procuratorate;
     }
 
     public long getId() {
@@ -65,4 +78,13 @@ public class CriminalCase {
     public void setCaseInformation(CaseInformation caseInformation) {
         this.caseInformation = caseInformation;
     }
+
+    public Procuratorate getProcuratorate() {
+        return procuratorate;
+    }
+
+    public void setProcuratorate(Procuratorate procuratorate) {
+        this.procuratorate = procuratorate;
+    }
+
 }

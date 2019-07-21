@@ -13,6 +13,14 @@ public class Procuratorate {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
+    public Procuratorate() {
+    }
+
+    public Procuratorate(String name) {
+        this.name = name;
+    }
+
+
     public long getId() {
         return id;
     }
